@@ -1,0 +1,954 @@
+[
+    {
+        "name": "rock_14_lev2",
+        "x": 43.341190338134766,
+        "y": 0.3921384811401367,
+        "z": -38.59511184692383,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "low_poly_cuboid_rock_012_lev2",
+        "x": 17.618824005126953,
+        "y": 4.918263912200928,
+        "z": 39.93944549560547,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "baked_lev2",
+        "x": -0.0650787353515625,
+        "y": 0.3423145115375519,
+        "z": 22.87527847290039,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-small_lev2",
+        "x": 24.44084358215332,
+        "y": 0.2707436680793762,
+        "z": -35.936092376708984,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight_lev2",
+        "x": 8.168371200561523,
+        "y": 0.27074310183525085,
+        "z": -5.731126308441162,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-wide-corner-large_lev2",
+        "x": -5.168799877166748,
+        "y": 0.301742821931839,
+        "z": -6.597268104553223,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.003_lev2",
+        "x": 25.248779296875,
+        "y": 0.2707436680793762,
+        "z": -32.77989196777344,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.003_lev2",
+        "x": 18.092538833618164,
+        "y": 0.2825482487678528,
+        "z": -38.69268035888672,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.004_lev2",
+        "x": -9.846025466918945,
+        "y": 0.2825482487678528,
+        "z": -6.690788745880127,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.005_lev2",
+        "x": -1.9549460411071777,
+        "y": 0.2825482487678528,
+        "z": -1.8719910383224487,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.006_lev2",
+        "x": 4.221464157104492,
+        "y": 0.2825482487678528,
+        "z": -4.299884796142578,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "pipe_ringhigh_lev2",
+        "x": -4.002159118652344,
+        "y": 1.15077543258667,
+        "z": -1.4777265787124634,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "pipe_ringhighend_lev2",
+        "x": -19.77686882019043,
+        "y": 0.8551033139228821,
+        "z": -7.141472816467285,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocket_baseb_lev2",
+        "x": -5.674877643585205,
+        "y": 0.8212589621543884,
+        "z": -5.283523082733154,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_diagonal_lev2",
+        "x": -18.190834045410156,
+        "y": 0.9208789467811584,
+        "z": -2.064208745956421,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.013_lev2",
+        "x": 27.0948429107666,
+        "y": 0.2707436680793762,
+        "z": -4.622316837310791,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.016_lev2",
+        "x": 31.07499885559082,
+        "y": 0.30086028575897217,
+        "z": -9.035322189331055,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-wide-corner-large.001_lev2",
+        "x": 23.305980682373047,
+        "y": 0.301742821931839,
+        "z": -17.169355392456055,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.017_lev2",
+        "x": 26.46009063720703,
+        "y": 0.2825482487678528,
+        "z": -12.44127082824707,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.018_lev2",
+        "x": 18.69313621520996,
+        "y": 0.2825482487678528,
+        "z": -20.554168701171875,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.019_lev2",
+        "x": 23.526580810546875,
+        "y": 0.2865782082080841,
+        "z": -28.454219818115234,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.020_lev2",
+        "x": 18.77971076965332,
+        "y": 0.2825482487678528,
+        "z": -25.281538009643555,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.019_lev2",
+        "x": 21.78437042236328,
+        "y": 0.2707436680793762,
+        "z": -36.839542388916016,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-wide-corner-large.002_lev2",
+        "x": 15.151449203491211,
+        "y": 0.301742821931839,
+        "z": -43.580387115478516,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.021_lev2",
+        "x": 10.508445739746094,
+        "y": 0.2825482487678528,
+        "z": -43.885311126708984,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.020_lev2",
+        "x": 5.192848205566406,
+        "y": 0.2707436680793762,
+        "z": -39.689842224121094,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.021_lev2",
+        "x": 2.110149383544922,
+        "y": 0.2707436680793762,
+        "z": -39.73072814941406,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.022_lev2",
+        "x": -0.9545440673828125,
+        "y": 0.2707436680793762,
+        "z": -39.7713737487793,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.022_lev2",
+        "x": -8.317657470703125,
+        "y": 0.2939738631248474,
+        "z": -27.84639549255371,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.023_lev2",
+        "x": -6.577264785766602,
+        "y": 0.2821703255176544,
+        "z": -33.028202056884766,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.023_lev2",
+        "x": -4.845325469970703,
+        "y": 0.2962738573551178,
+        "z": -38.20766067504883,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.024_lev2",
+        "x": -11.941936492919922,
+        "y": 0.2707436680793762,
+        "z": -26.2944393157959,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.025_lev2",
+        "x": -14.745466232299805,
+        "y": 0.2707436680793762,
+        "z": -26.33159637451172,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.026_lev2",
+        "x": -17.810068130493164,
+        "y": 0.2707436680793762,
+        "z": -26.372241973876953,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.024_lev2",
+        "x": -21.693967819213867,
+        "y": 0.2825482487678528,
+        "z": -28.095001220703125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-wide-corner-large.003_lev2",
+        "x": -24.893407821655273,
+        "y": 0.31741246581077576,
+        "z": -32.7945671081543,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.025_lev2",
+        "x": -29.5836181640625,
+        "y": 0.30975091457366943,
+        "z": -32.913734436035156,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.027_lev2",
+        "x": -15.093581199645996,
+        "y": 0.2707436680793762,
+        "z": -2.4181365966796875,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.028_lev2",
+        "x": -18.15827751159668,
+        "y": 0.2707436680793762,
+        "z": -2.4587841033935547,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.026_lev2",
+        "x": -22.048192977905273,
+        "y": 0.2825482487678528,
+        "z": -4.154514312744141,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.029_lev2",
+        "x": -23.620933532714844,
+        "y": 0.2707436680793762,
+        "z": -8.48760986328125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.030_lev2",
+        "x": -23.565326690673828,
+        "y": 0.2707436680793762,
+        "z": -12.479514122009277,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.031_lev2",
+        "x": -23.510921478271484,
+        "y": 0.2707436680793762,
+        "z": -16.44806480407715,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-wide-corner-large.004_lev2",
+        "x": -25.101085662841797,
+        "y": 0.301742821931839,
+        "z": -20.812816619873047,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-large.027_lev2",
+        "x": -29.742677688598633,
+        "y": 0.2825482487678528,
+        "z": -24.206195831298828,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.032_lev2",
+        "x": -31.29973030090332,
+        "y": 0.2707436680793762,
+        "z": -28.568933486938477,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tree-pine-large.009_lev2",
+        "x": -8.53436279296875,
+        "y": 1.3189327716827393,
+        "z": -24.961116790771484,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-small.004_lev2",
+        "x": 1.523123025894165,
+        "y": 0.2874414324760437,
+        "z": -1.0089266300201416,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-small.002_lev2",
+        "x": -12.426797866821289,
+        "y": 0.28324779868125916,
+        "z": -3.2262935638427734,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-small.003_lev2",
+        "x": 7.8601531982421875,
+        "y": 0.28324779868125916,
+        "z": -40.49736785888672,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-corner-small.004.001_lev2",
+        "x": 31.74127960205078,
+        "y": 0.2874414324760437,
+        "z": -5.467984199523926,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.013.001_lev2",
+        "x": 20.011192321777344,
+        "y": 0.2707436680793762,
+        "z": -4.622316837310791,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "track-road-wide-straight.013.002_lev2",
+        "x": 13.370269775390625,
+        "y": 0.2707436680793762,
+        "z": -4.622316837310791,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-a_lev2",
+        "x": 34.1836051940918,
+        "y": 3.027160882949829,
+        "z": 38.42948913574219,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "low_poly_cuboid_rock_012.001_lev2",
+        "x": 5.817631721496582,
+        "y": 4.918263912200928,
+        "z": 39.93944549560547,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "low_poly_cuboid_rock_012.002_lev2",
+        "x": -6.651918411254883,
+        "y": 4.918263912200928,
+        "z": 39.93944549560547,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-a.001_lev2",
+        "x": 34.1836051940918,
+        "y": -0.15321707725524902,
+        "z": 16.39105987548828,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-middle_lev2",
+        "x": -20.920379638671875,
+        "y": 0.0,
+        "z": 40.811397552490234,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-middle.001_lev2",
+        "x": -32.936317443847656,
+        "y": 0.0,
+        "z": 40.811397552490234,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-a.002_lev2",
+        "x": -39.976505279541016,
+        "y": -0.2598109245300293,
+        "z": 27.855236053466797,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-small_lev2",
+        "x": 7.148473262786865,
+        "y": 0.0,
+        "z": 23.765745162963867,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-large_lev2",
+        "x": 6.7030839920043945,
+        "y": 0.0,
+        "z": 18.383647918701172,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-large.001_lev2",
+        "x": -7.865200042724609,
+        "y": 0.0,
+        "z": 18.383647918701172,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-large.002_lev2",
+        "x": 6.7030839920043945,
+        "y": 0.0,
+        "z": 30.490249633789062,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-large.003_lev2",
+        "x": -8.054954528808594,
+        "y": 0.0,
+        "z": 30.490249633789062,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "patch-sand-foliage_lev2",
+        "x": -20.318317413330078,
+        "y": 0.0,
+        "z": 25.229827880859375,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "patch-sand-foliage.001_lev2",
+        "x": 18.469738006591797,
+        "y": 0.0,
+        "z": 11.876623153686523,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "ship-wreck_lev2",
+        "x": 1.5684281587600708,
+        "y": 0.0,
+        "z": -30.853519439697266,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "patch-sand_lev2",
+        "x": 4.192523956298828,
+        "y": 0.0,
+        "z": -30.853519439697266,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "ship-wreck.001_lev2",
+        "x": -15.34809398651123,
+        "y": 0.0,
+        "z": -13.37424087524414,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "patch-sand.001_lev2",
+        "x": -15.251839637756348,
+        "y": 0.0,
+        "z": -15.996570587158203,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "structure_lev2",
+        "x": -1.830484390258789,
+        "y": 0.0,
+        "z": -21.75230598449707,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-pirate-high_lev2",
+        "x": 13.166397094726562,
+        "y": 0.0,
+        "z": -18.639575958251953,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high-pennant_lev2",
+        "x": 25.362064361572266,
+        "y": 0.0,
+        "z": -20.121471405029297,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high_lev2",
+        "x": 25.410242080688477,
+        "y": 0.0,
+        "z": -26.679840087890625,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-top_lev2",
+        "x": -41.84869384765625,
+        "y": 0.0,
+        "z": 13.818790435791016,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "ship-wreck.002_lev2",
+        "x": -32.051963806152344,
+        "y": 0.0,
+        "z": 13.004362106323242,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "sail-a.007_lev2",
+        "x": -31.385377883911133,
+        "y": 3.1385200023651123,
+        "z": 13.011853218078613,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-sand-b_lev2",
+        "x": -41.79897689819336,
+        "y": 0.0,
+        "z": 3.9522104263305664,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-b_lev2",
+        "x": -38.99945068359375,
+        "y": 0.0,
+        "z": -40.595829010009766,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "patch-sand.002_lev2",
+        "x": -41.66362762451172,
+        "y": 0.0,
+        "z": -2.6482601165771484,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "group.008_lev2",
+        "x": -36.2730712890625,
+        "y": 3.5,
+        "z": 14.125434875488281,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "group.007_lev2",
+        "x": -31.159822463989258,
+        "y": 2.0999999046325684,
+        "z": 13.715930938720703,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "group.006_lev2",
+        "x": -30.102413177490234,
+        "y": 2.0999999046325684,
+        "z": 13.55947208404541,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "group.005_lev2",
+        "x": -35.89744186401367,
+        "y": 3.5,
+        "z": 13.11679458618164,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "group.004_lev2",
+        "x": -37.04384994506836,
+        "y": 4.667734146118164,
+        "z": 12.158525466918945,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.009_lev2",
+        "x": -30.342111587524414,
+        "y": 2.5999999046325684,
+        "z": 11.363093376159668,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.008_lev2",
+        "x": -32.62071228027344,
+        "y": 2.0999999046325684,
+        "z": 11.06971549987793,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.007_lev2",
+        "x": -33.037132263183594,
+        "y": 1.600000023841858,
+        "z": 13.232891082763672,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.006_lev2",
+        "x": -36.24028778076172,
+        "y": 3.5,
+        "z": 11.969408988952637,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.005_lev2",
+        "x": -36.561424255371094,
+        "y": 3.625,
+        "z": 13.354736328125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.004_lev2",
+        "x": -30.21836280822754,
+        "y": 2.2249999046325684,
+        "z": 13.943516731262207,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.003_lev2",
+        "x": -29.684345245361328,
+        "y": 2.2249999046325684,
+        "z": 13.422000885009766,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.002_lev2",
+        "x": -33.575687408447266,
+        "y": 2.0999999046325684,
+        "z": 11.862142562866211,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "grass.001_lev2",
+        "x": -31.180870056152344,
+        "y": 2.0999999046325684,
+        "z": 14.476765632629395,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-top.001_lev2",
+        "x": -41.84869384765625,
+        "y": 0.0,
+        "z": -12.080154418945312,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-top.002_lev2",
+        "x": -41.84869384765625,
+        "y": 0.0,
+        "z": -21.301467895507812,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rock_14.001_lev2",
+        "x": 43.341190338134766,
+        "y": 0.3921384811401367,
+        "z": -26.417858123779297,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "rocks-b.001_lev2",
+        "x": 40.76546096801758,
+        "y": 0.0,
+        "z": -12.728527069091797,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-complete-small.001_lev2",
+        "x": -7.8064188957214355,
+        "y": 0.0,
+        "z": 23.765745162963867,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high-pennant.001_lev2",
+        "x": 3.8456194400787354,
+        "y": 0.0,
+        "z": 12.602484703063965,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high.001_lev2",
+        "x": -3.5622689723968506,
+        "y": 0.0,
+        "z": 12.602484703063965,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high.002_lev2",
+        "x": -3.5622689723968506,
+        "y": 0.0,
+        "z": -44.3419075012207,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "flag-high-pennant.002_lev2",
+        "x": 3.8456194400787354,
+        "y": 0.0,
+        "z": -44.3419075012207,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-detailed-straight_lev2",
+        "x": -25.307472229003906,
+        "y": 0.0,
+        "z": -2.9418418407440186,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend_lev2",
+        "x": -26.23354721069336,
+        "y": 0.0,
+        "z": 8.41569709777832,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-detailed-straight.001_lev2",
+        "x": -12.966461181640625,
+        "y": 0.0,
+        "z": -41.68086624145508,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend.001_lev2",
+        "x": -24.337364196777344,
+        "y": 0.0,
+        "z": -40.93669509887695,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-detailed-straight.002_lev2",
+        "x": 34.99199295043945,
+        "y": 0.0,
+        "z": -2.9418418407440186,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend.002_lev2",
+        "x": 34.06591796875,
+        "y": 0.0,
+        "z": 8.41569709777832,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend.003_lev2",
+        "x": 34.06591796875,
+        "y": 0.0,
+        "z": -46.332305908203125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend.004_lev2",
+        "x": 26.435136795043945,
+        "y": 0.0,
+        "z": -46.332305908203125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "palm-bend.005_lev2",
+        "x": 18.683746337890625,
+        "y": 0.0,
+        "z": -46.332305908203125,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "ship-ghost_lev2",
+        "x": 31.597110748291016,
+        "y": 0.0,
+        "z": -30.225950241088867,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-roof_lev2",
+        "x": 10.0541353225708,
+        "y": 0.0,
+        "z": -5.015196323394775,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "tower-middle-windows_lev2",
+        "x": -34.394187927246094,
+        "y": 0.0,
+        "z": -0.0,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "structure.001_lev2",
+        "x": -14.639979362487793,
+        "y": 0.0,
+        "z": 2.357269287109375,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "structure.002_lev2",
+        "x": -14.639979362487793,
+        "y": 0.0,
+        "z": 15.279947280883789,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "ship-large_lev2",
+        "x": 27.546586990356445,
+        "y": 0.0,
+        "z": 27.142589569091797,
+        "level": 2,
+        "role": "default"
+    }
+]
