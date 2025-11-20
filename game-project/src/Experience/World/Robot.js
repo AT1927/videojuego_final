@@ -21,7 +21,7 @@ export default class Robot {
 
     setModel() {
         this.model = this.resources.items.robotModel.scene
-        this.model.scale.set(0.3, 0.3, 0.3)
+        this.model.scale.set(0.6, 0.6, 0.6)
         this.model.position.set(0, -0.1, 0) // Centrar respecto al cuerpo físico
 
         this.group = new THREE.Group()
@@ -76,29 +76,115 @@ export default class Robot {
         this.animation = {}
         this.animation.mixer = new THREE.AnimationMixer(this.model)
 
+        const animations = this.resources.items.robotModel.animations
+        
+        // Función helper para buscar animaciones por nombre (case-insensitive)
+        const findAnimation = (searchNames) => {
+            for (const clip of animations) {
+                const clipNameLower = clip.name.toLowerCase()
+                for (const searchName of searchNames) {
+                    if (clipNameLower.includes(searchName.toLowerCase())) {
+                        return clip
+                    }
+                }
+            }
+            return null
+        }
+
         this.animation.actions = {}
-        this.animation.actions.dance = this.animation.mixer.clipAction(this.resources.items.robotModel.animations[0])
-        this.animation.actions.death = this.animation.mixer.clipAction(this.resources.items.robotModel.animations[1])
-        this.animation.actions.idle = this.animation.mixer.clipAction(this.resources.items.robotModel.animations[2])
-        this.animation.actions.jump = this.animation.mixer.clipAction(this.resources.items.robotModel.animations[3])
-        this.animation.actions.walking = this.animation.mixer.clipAction(this.resources.items.robotModel.animations[10])
+        
+        // Buscar animaciones por nombres comunes
+        const idleClip = findAnimation(['idle', 'stand', 'rest', 'breath'])
+        const walkClip = findAnimation(['walk', 'run', 'move', 'forward'])
+        const jumpClip = findAnimation(['jump', 'leap', 'hop'])
+        const deathClip = findAnimation(['death', 'die', 'dead', 'fall'])
+        const danceClip = findAnimation(['dance', 'victory', 'celebrate', 'win'])
+
+        // Asignar animaciones encontradas o usar la primera disponible como fallback
+        if (idleClip) {
+            this.animation.actions.idle = this.animation.mixer.clipAction(idleClip)
+        } else if (animations.length > 0) {
+            this.animation.actions.idle = this.animation.mixer.clipAction(animations[0])
+            console.warn('⚠️ Animación idle no encontrada, usando primera animación disponible')
+        }
+
+        if (walkClip) {
+            this.animation.actions.walking = this.animation.mixer.clipAction(walkClip)
+        } else if (animations.length > 1) {
+            this.animation.actions.walking = this.animation.mixer.clipAction(animations[1])
+            console.warn('⚠️ Animación walking no encontrada, usando segunda animación disponible')
+        } else {
+            this.animation.actions.walking = this.animation.actions.idle
+            console.warn('⚠️ Animación walking no encontrada, usando idle')
+        }
+
+        if (jumpClip) {
+            this.animation.actions.jump = this.animation.mixer.clipAction(jumpClip)
+        } else if (animations.length > 2) {
+            this.animation.actions.jump = this.animation.mixer.clipAction(animations[2])
+            console.warn('⚠️ Animación jump no encontrada, usando tercera animación disponible')
+        } else {
+            this.animation.actions.jump = this.animation.actions.idle
+            console.warn('⚠️ Animación jump no encontrada, usando idle')
+        }
+
+        if (deathClip) {
+            this.animation.actions.death = this.animation.mixer.clipAction(deathClip)
+        } else if (animations.length > 3) {
+            this.animation.actions.death = this.animation.mixer.clipAction(animations[3])
+            console.warn('⚠️ Animación death no encontrada, usando cuarta animación disponible')
+        } else {
+            this.animation.actions.death = this.animation.actions.idle
+            console.warn('⚠️ Animación death no encontrada, usando idle')
+        }
+
+        if (danceClip) {
+            this.animation.actions.dance = this.animation.mixer.clipAction(danceClip)
+        } else if (animations.length > 0) {
+            this.animation.actions.dance = this.animation.mixer.clipAction(animations[0])
+            console.warn('⚠️ Animación dance no encontrada, usando primera animación disponible')
+        } else {
+            this.animation.actions.dance = this.animation.actions.idle
+        }
+
+        // Log de animaciones encontradas para debugging
+        console.log('🎬 Animaciones disponibles en el modelo:')
+        animations.forEach((clip, index) => {
+            console.log(`  ${index}: ${clip.name}`)
+        })
+        console.log('🎯 Animaciones asignadas:')
+        console.log(`  Idle: ${idleClip?.name || 'fallback'}`)
+        console.log(`  Walking: ${walkClip?.name || 'fallback'}`)
+        console.log(`  Jump: ${jumpClip?.name || 'fallback'}`)
+        console.log(`  Death: ${deathClip?.name || 'fallback'}`)
+        console.log(`  Dance: ${danceClip?.name || 'fallback'}`)
 
         this.animation.actions.current = this.animation.actions.idle
         this.animation.actions.current.play()
 
-        this.animation.actions.jump.setLoop(THREE.LoopOnce)
-        this.animation.actions.jump.clampWhenFinished = true
-        this.animation.actions.jump.onFinished = () => {
-            this.animation.play('idle')
+        // Configurar jump como animación de una sola vez
+        if (this.animation.actions.jump) {
+            this.animation.actions.jump.setLoop(THREE.LoopOnce)
+            this.animation.actions.jump.clampWhenFinished = true
+            this.animation.actions.jump.onFinished = () => {
+                this.animation.play('idle')
+            }
         }
 
         this.animation.play = (name) => {
             const newAction = this.animation.actions[name]
+            if (!newAction) {
+                console.warn(`⚠️ Animación "${name}" no disponible`)
+                return
+            }
+
             const oldAction = this.animation.actions.current
 
             newAction.reset()
             newAction.play()
-            newAction.crossFadeFrom(oldAction, 0.3)
+            if (oldAction && oldAction !== newAction) {
+                newAction.crossFadeFrom(oldAction, 0.3)
+            }
             this.animation.actions.current = newAction
 
             if (name === 'walking') {

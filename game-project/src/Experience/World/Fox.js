@@ -7,6 +7,12 @@ export default class Fox {
         this.resources = this.experience.resources
         this.time = this.experience.time
         this.debug = this.experience.debug
+        
+        // Velocidad de movimiento del lobo
+        this.speed = 2.0
+        this.followDistance = 3.0 // Distancia mínima para seguir al jugador
+        this.stopDistance = 2.0 // Distancia a la que se detiene
+        this.isMoving = false
 
         // Debug
         if (this.debug.active) {
@@ -52,11 +58,18 @@ export default class Fox {
         // Play the action
         this.animation.play = (name) => {
             const newAction = this.animation.actions[name]
+            if (!newAction) {
+                console.warn(`⚠️ Animación "${name}" no encontrada en el lobo`)
+                return
+            }
+            
             const oldAction = this.animation.actions.current
 
             newAction.reset()
             newAction.play()
-            newAction.crossFadeFrom(oldAction, 1)
+            if (oldAction && oldAction !== newAction) {
+                newAction.crossFadeFrom(oldAction, 0.3) // Transición más suave
+            }
 
             this.animation.actions.current = newAction
         }
@@ -75,6 +88,86 @@ export default class Fox {
     }
 
     update() {
-        this.animation.mixer.update(this.time.delta * 0.001)
+        const delta = this.time.delta * 0.001
+        this.animation.mixer.update(delta)
+        
+        // Seguir al jugador si está disponible
+        this.followPlayer(delta)
+    }
+    
+    followPlayer(delta) {
+        // Obtener referencia al robot/jugador
+        const player = this.experience.world?.robot
+        if (!player || !player.body || !this.model) {
+            return
+        }
+        
+        // Obtener posiciones
+        const playerPos = player.body.position
+        const foxPos = this.model.position
+        
+        // Calcular distancia al jugador
+        const distance = foxPos.distanceTo(
+            new THREE.Vector3(playerPos.x, playerPos.y, playerPos.z)
+        )
+        
+        // Determinar si debe moverse
+        if (distance > this.followDistance) {
+            // Calcular dirección hacia el jugador
+            const direction = new THREE.Vector3(
+                playerPos.x - foxPos.x,
+                0, // Mantener en el suelo
+                playerPos.z - foxPos.z
+            ).normalize()
+            
+            // Mover hacia el jugador
+            const moveDistance = this.speed * delta
+            this.model.position.x += direction.x * moveDistance
+            this.model.position.z += direction.z * moveDistance
+            
+            // Rotar el modelo hacia la dirección de movimiento
+            const angle = Math.atan2(direction.x, direction.z)
+            this.model.rotation.y = angle
+            
+            this.isMoving = true
+            
+            // Cambiar animación según la distancia
+            if (distance > this.followDistance * 2) {
+                // Muy lejos: correr
+                if (this.animation.actions.current !== this.animation.actions.running) {
+                    this.animation.play('running')
+                }
+            } else {
+                // Cerca pero no lo suficientemente cerca: caminar
+                if (this.animation.actions.current !== this.animation.actions.walking) {
+                    this.animation.play('walking')
+                }
+            }
+        } else if (distance <= this.stopDistance) {
+            // Muy cerca: detenerse y usar idle
+            this.isMoving = false
+            if (this.animation.actions.current !== this.animation.actions.idle) {
+                this.animation.play('idle')
+            }
+        } else {
+            // Zona intermedia: caminar lentamente
+            const direction = new THREE.Vector3(
+                playerPos.x - foxPos.x,
+                0,
+                playerPos.z - foxPos.z
+            ).normalize()
+            
+            const moveDistance = (this.speed * 0.5) * delta // Movimiento más lento
+            this.model.position.x += direction.x * moveDistance
+            this.model.position.z += direction.z * moveDistance
+            
+            const angle = Math.atan2(direction.x, direction.z)
+            this.model.rotation.y = angle
+            
+            this.isMoving = true
+            if (this.animation.actions.current !== this.animation.actions.walking) {
+                this.animation.play('walking')
+            }
+        }
     }
 }

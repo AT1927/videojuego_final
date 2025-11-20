@@ -7,10 +7,15 @@ export default class FinalPrizeParticles {
     this.experience = experience
     this.clock = new THREE.Clock()
 
-    this.count = 60 
+    this.count = 100 
     this.angles = new Float32Array(this.count)
     this.radii = new Float32Array(this.count)
     this.positions = new Float32Array(this.count * 3)
+    this.colors = new Float32Array(this.count * 3)
+
+    const color1 = new THREE.Color(0xffff00)
+    const color2 = new THREE.Color(0x00ffff)
+    const color3 = new THREE.Color(0xff00ff)
 
     for (let i = 0; i < this.count; i++) {
       const i3 = i * 3
@@ -24,18 +29,35 @@ export default class FinalPrizeParticles {
       this.positions[i3 + 0] = sourcePosition.x + Math.cos(angle) * radius
       this.positions[i3 + 1] = sourcePosition.y + y
       this.positions[i3 + 2] = sourcePosition.z + Math.sin(angle) * radius
+
+      // Colores variados
+      const colorMix = Math.random()
+      let color
+      if (colorMix < 0.33) {
+        color = color1
+      } else if (colorMix < 0.66) {
+        color = color2
+      } else {
+        color = color3
+      }
+
+      this.colors[i3] = color.r
+      this.colors[i3 + 1] = color.g
+      this.colors[i3 + 2] = color.b
     }
 
     this.geometry = new THREE.BufferGeometry()
     this.geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3))
+    this.geometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3))
 
     const material = new THREE.PointsMaterial({
-      size: 0.3,
-      color: 0xffff00,
+      size: 0.4,
+      vertexColors: true,
       transparent: true,
       opacity: 0.9,
       sizeAttenuation: true,
-      depthWrite: false
+      depthWrite: false,
+      blending: THREE.AdditiveBlending
     })
 
     this.points = new THREE.Points(this.geometry, material)

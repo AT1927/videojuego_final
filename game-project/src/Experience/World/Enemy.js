@@ -23,10 +23,25 @@ export default class Enemy {
         this._soundCooldown = 0
         this.proximitySound.play()
 
-        // Modelo visual
-        this.model = model.clone()
+        // Modelo visual - clonar correctamente el modelo GLTF
+        this.model = model.clone(true) // Clonar recursivamente
         this.model.position.copy(position)
+        
+        // Configurar escala para el modelo Skeleton (ajustar según necesidad)
+        this.model.scale.set(0.5, 0.5, 0.5)
+        
+        // Configurar sombras
+        this.model.traverse((child) => {
+            if (child instanceof THREE.Mesh) {
+                child.castShadow = true
+                child.receiveShadow = true
+            }
+        })
+        
         this.scene.add(this.model)
+        
+        // Configurar animaciones
+        this.setAnimation()
 
         //  Material físico del enemigo
         const enemyMaterial = new CANNON.Material('enemyMaterial')
@@ -130,11 +145,122 @@ export default class Enemy {
 
         //  Sincronizar modelo visual
         this.model.position.copy(this.body.position)
+        
+        // Rotar el modelo hacia la dirección de movimiento
+        if (direction.length() > 0.5) {
+            const angle = Math.atan2(direction.x, direction.z)
+            this.model.rotation.y = angle
+        }
+        
+        // Actualizar animaciones
+        if (this.animation && this.animation.mixer) {
+            this.animation.mixer.update(delta)
+        }
+    }
+    
+    setAnimation() {
+        // Verificar si el modelo tiene animaciones (es un GLTF)
+        const gltfData = this.experience?.resources?.items?.enemyModel
+        if (!gltfData || !gltfData.animations || gltfData.animations.length === 0) {
+            console.warn('⚠️ Modelo enemigo no tiene animaciones o no está cargado')
+            return
+        }
+        
+        // Función helper para buscar animaciones por nombre
+        const findAnimation = (searchNames) => {
+            for (const clip of gltfData.animations) {
+                const clipNameLower = clip.name.toLowerCase()
+                for (const searchName of searchNames) {
+                    if (clipNameLower.includes(searchName.toLowerCase())) {
+                        return clip
+                    }
+                }
+            }
+            return null
+        }
+        
+        this.animation = {}
+        this.animation.mixer = new THREE.AnimationMixer(this.model)
+        this.animation.actions = {}
+        
+        // Buscar animaciones comunes para enemigos
+        const walkClip = findAnimation(['walk', 'run', 'move', 'chase', 'pursuit', 'forward'])
+        const idleClip = findAnimation(['idle', 'stand', 'rest', 'breath'])
+        const attackClip = findAnimation(['attack', 'hit', 'strike', 'punch'])
+        
+        // Asignar animaciones encontradas
+        if (walkClip) {
+            this.animation.actions.walking = this.animation.mixer.clipAction(walkClip)
+            this.animation.actions.walking.setLoop(THREE.LoopRepeat)
+        } else if (gltfData.animations.length > 0) {
+            // Usar la primera animación como walking si no se encuentra
+            this.animation.actions.walking = this.animation.mixer.clipAction(gltfData.animations[0])
+            this.animation.actions.walking.setLoop(THREE.LoopRepeat)
+            console.warn('⚠️ Animación walking no encontrada, usando primera animación disponible')
+        }
+        
+        if (idleClip) {
+            this.animation.actions.idle = this.animation.mixer.clipAction(idleClip)
+            this.animation.actions.idle.setLoop(THREE.LoopRepeat)
+        } else if (gltfData.animations.length > 0) {
+            this.animation.actions.idle = this.animation.mixer.clipAction(gltfData.animations[0])
+            this.animation.actions.idle.setLoop(THREE.LoopRepeat)
+        }
+        
+        if (attackClip) {
+            this.animation.actions.attack = this.animation.mixer.clipAction(attackClip)
+            this.animation.actions.attack.setLoop(THREE.LoopOnce)
+        }
+        
+        // Log de animaciones encontradas (solo una vez por tipo de enemigo)
+        if (!Enemy._animationsLogged) {
+            console.log('🎬 Animaciones disponibles en el modelo enemigo:')
+            gltfData.animations.forEach((clip, index) => {
+                console.log(`  ${index}: ${clip.name}`)
+            })
+            console.log('🎯 Animaciones asignadas:')
+            console.log(`  Walking: ${walkClip?.name || 'fallback'}`)
+            console.log(`  Idle: ${idleClip?.name || 'fallback'}`)
+            console.log(`  Attack: ${attackClip?.name || 'no encontrada'}`)
+            Enemy._animationsLogged = true
+        }
+        
+        // Iniciar animación de caminar (ya que el enemigo siempre está persiguiendo)
+        if (this.animation.actions.walking) {
+            this.animation.actions.walking.play()
+            this.animation.currentAction = this.animation.actions.walking
+        } else if (this.animation.actions.idle) {
+            this.animation.actions.idle.play()
+            this.animation.currentAction = this.animation.actions.idle
+        }
     }
 
     destroy() {
+        // Limpiar animaciones
+        if (this.animation && this.animation.mixer) {
+            if (this.animation.actions) {
+                Object.values(this.animation.actions).forEach(action => {
+                    if (action) action.stop()
+                })
+            }
+            this.animation.mixer.stopAllAction()
+            this.animation.mixer = null
+        }
+        
         if (this.model) {
             this.scene.remove(this.model)
+            
+            // Limpiar geometrías y materiales
+            this.model.traverse((child) => {
+                if (child.geometry) child.geometry.dispose()
+                if (child.material) {
+                    if (Array.isArray(child.material)) {
+                        child.material.forEach(mat => mat.dispose())
+                    } else {
+                        child.material.dispose()
+                    }
+                }
+            })
         }
 
         if (this.proximitySound) {

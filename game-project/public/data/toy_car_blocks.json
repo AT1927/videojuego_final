@@ -1448,18 +1448,18 @@
         "role": "default"
     },
     {
-        "name": "coin_structure_diagonal_lev2",
-        "x": -18.190834045410156,
-        "y": 0.9208789467811584,
-        "z": -2.064208745956421,
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": 24.481434196029156,
+        "y": 1,
+        "z": -22.13552676781668,
         "level": 2,
         "role": "default"
     },
         {
         "name": "coin_structure_diagonal_lev2",
-        "x": -10.190834045410156,
-        "y": 0.9208789467811584,
-        "z": -2.064208745956421,
+        "x": -0.5031699033820978,
+        "y": 1,
+        "z": 22.884641453287063,
         "level": 2,
         "role": "finalPrize"
     },
@@ -2293,6 +2293,1358 @@
         "y": 0.0,
         "z": 27.142589569091797,
         "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "baked_lev2_lev3",
+        "x": 20.961944580078125,
+        "y": 0.3423145115375519,
+        "z": -34.37831115722656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": 4.005804061889648,
+        "y": 1.3172268867492676,
+        "z": 15.909136772155762,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_diagonal_lev2",
+        "x": 14.005804061889648,
+        "y": 1.3172268867492676,
+        "z": 15.909136772155762,
+        "level": 3,
+        "role": "finalPrize"
+    },
+    {
+        "name": "tree-tall_lev3",
+        "x": 13.758016586303711,
+        "y": 0.0,
+        "z": 0.9102737903594971,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn-tall_lev3",
+        "x": -4.701235294342041,
+        "y": 0.0,
+        "z": 18.96656036376953,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn_lev3",
+        "x": -15.248592376708984,
+        "y": 0.0,
+        "z": -11.912310600280762,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree_lev3",
+        "x": 8.64084529876709,
+        "y": 0.0,
+        "z": 0.9102737903594971,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.001_lev3",
+        "x": -10.65200138092041,
+        "y": 0.0,
+        "z": -42.53515625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn-tall.001_lev3",
+        "x": -32.21723937988281,
+        "y": 0.0,
+        "z": -31.419902801513672,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.001_lev3",
+        "x": -20.789871215820312,
+        "y": 0.0,
+        "z": -38.2564697265625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree.001_lev3",
+        "x": -10.260436058044434,
+        "y": 0.0,
+        "z": -47.6373291015625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.002_lev3",
+        "x": 3.7064762115478516,
+        "y": 0.0,
+        "z": 16.39336585998535,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.002_lev3",
+        "x": 10.470344543457031,
+        "y": 0.0,
+        "z": 36.717926025390625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.003_lev3",
+        "x": 43.9813232421875,
+        "y": 0.0,
+        "z": 16.39336585998535,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.003_lev3",
+        "x": 3.7567410469055176,
+        "y": 0.0,
+        "z": 36.717926025390625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.004_lev3",
+        "x": 26.872303009033203,
+        "y": 0.0,
+        "z": 16.39336585998535,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.004_lev3",
+        "x": -2.1343026161193848,
+        "y": 0.0,
+        "z": 36.717926025390625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.005_lev3",
+        "x": 21.864530563354492,
+        "y": 0.0,
+        "z": 2.7181243896484375,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.005_lev3",
+        "x": -7.142075061798096,
+        "y": 0.0,
+        "z": 36.717926025390625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-sand-c_lev3",
+        "x": 10.727726936340332,
+        "y": 0.0,
+        "z": -42.92613220214844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-sand-b_lev3",
+        "x": 38.007205963134766,
+        "y": 0.0,
+        "z": 34.27955627441406,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-a_lev3",
+        "x": -38.04188537597656,
+        "y": 0.0,
+        "z": 36.90684127807617,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "workbench-grind_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "workbench-anvil_lev3",
+        "x": -24.52664566040039,
+        "y": 0.0,
+        "z": -24.58116912841797,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "workbench_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "wood_lev3",
+        "x": -40.71135711669922,
+        "y": 0.13306477665901184,
+        "z": 0.38971251249313354,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "wheel_lev3",
+        "x": -40.70185089111328,
+        "y": 1.6538896560668945,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-trunk_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-log-small_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-log_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn-trunk_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-shovel-upgraded_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-shovel_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-pickaxe-upgraded_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-pickaxe_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-hoe-upgraded_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-hoe_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-hammer-upgraded_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-hammer_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-axe-upgraded_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tool-axe_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-flat-grass_lev3",
+        "x": -24.52664566040039,
+        "y": 0.0,
+        "z": -24.58116912841797,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-flat_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "resource-wood_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "resource-stone-large_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "resource-stone_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "resource-planks_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "patch-grass-large_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "patch-grass_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "paper_lev3",
+        "x": -40.00888442993164,
+        "y": 2.028531312942505,
+        "z": 0.3664347529411316,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws-half_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "lid_lev3",
+        "x": -40.70185089111328,
+        "y": 1.1388587951660156,
+        "z": -0.7873806953430176,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "hammer.001_lev3",
+        "x": -24.713815689086914,
+        "y": 3.313382625579834,
+        "z": -24.520143508911133,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "hammer_lev3",
+        "x": -41.432289123535156,
+        "y": 2.028531312942505,
+        "z": 0.19204115867614746,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "grass-large_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "grass_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "floor-old_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "floor-hole_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "floor_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fish-large_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fish_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "chest_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "campfire-stand_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "campfire-pit_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "campfire-fishing-stand_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-flat-grass.001_lev3",
+        "x": -40.70185089111328,
+        "y": 0.0,
+        "z": 0.27930259704589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-flat-grass.002_lev3",
+        "x": -18.730314254760742,
+        "y": 0.0,
+        "z": 39.84912872314453,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-c_lev3",
+        "x": -36.65024948120117,
+        "y": 0.0,
+        "z": -39.565895080566406,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-c.001_lev3",
+        "x": -41.67716598510742,
+        "y": 0.0,
+        "z": -17.71123695373535,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tent-canvas_lev3",
+        "x": -33.58256912231445,
+        "y": 0.0,
+        "z": 20.486976623535156,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tent-canvas.001_lev3",
+        "x": -39.90119934082031,
+        "y": 0.0,
+        "z": 20.486976623535156,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws_lev3",
+        "x": 45.90217208862305,
+        "y": 0.0,
+        "z": 7.311127662658691,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel_lev3",
+        "x": 45.90217208862305,
+        "y": 0.0,
+        "z": 2.878645181655884,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.001_lev3",
+        "x": 42.00918197631836,
+        "y": 0.0,
+        "z": 7.311127662658691,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.001_lev3",
+        "x": 42.00918197631836,
+        "y": 0.0,
+        "z": 2.878645181655884,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.002_lev3",
+        "x": 38.007530212402344,
+        "y": 0.0,
+        "z": 7.311127662658691,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.002_lev3",
+        "x": 38.007530212402344,
+        "y": 0.0,
+        "z": 2.878645181655884,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.003_lev3",
+        "x": 34.07276916503906,
+        "y": 0.0,
+        "z": 7.311127662658691,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.003_lev3",
+        "x": 34.07276916503906,
+        "y": 0.0,
+        "z": 2.878645181655884,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.004_lev3",
+        "x": 32.31674575805664,
+        "y": 0.0,
+        "z": -11.042107582092285,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.005_lev3",
+        "x": 32.274261474609375,
+        "y": 0.0,
+        "z": -7.149348258972168,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.006_lev3",
+        "x": 32.2305908203125,
+        "y": 0.0,
+        "z": -3.147934913635254,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.007_lev3",
+        "x": 32.18765640258789,
+        "y": 0.0,
+        "z": 0.7865915298461914,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.008_lev3",
+        "x": 32.31674575805664,
+        "y": 0.0,
+        "z": -26.80138397216797,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.009_lev3",
+        "x": 32.274261474609375,
+        "y": 0.0,
+        "z": -22.908626556396484,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.010_lev3",
+        "x": 32.2305908203125,
+        "y": 0.0,
+        "z": -18.907211303710938,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.011_lev3",
+        "x": 32.18765640258789,
+        "y": 0.0,
+        "z": -14.972685813903809,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "structure-floor_lev3",
+        "x": 40.09715270996094,
+        "y": 0.0,
+        "z": -4.146391868591309,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "group.001_lev3",
+        "x": 43.624691009521484,
+        "y": 3.2772603034973145,
+        "z": -7.61850643157959,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "structure-floor.001_lev3",
+        "x": 40.09715270996094,
+        "y": 0.0,
+        "z": -11.214418411254883,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "group.002_lev3",
+        "x": 43.624691009521484,
+        "y": 3.2772603034973145,
+        "z": -14.686532974243164,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "structure-floor.002_lev3",
+        "x": 40.09715270996094,
+        "y": 0.0,
+        "z": -17.957195281982422,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "group.003_lev3",
+        "x": 43.624691009521484,
+        "y": 3.2772603034973145,
+        "z": -21.429309844970703,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "structure-floor.003_lev3",
+        "x": 40.09715270996094,
+        "y": 0.0,
+        "z": -24.778209686279297,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "group.004_lev3",
+        "x": 43.624691009521484,
+        "y": 3.2772603034973145,
+        "z": -28.250324249267578,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.012_lev3",
+        "x": 32.31674575805664,
+        "y": 0.0,
+        "z": -30.412399291992188,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.004_lev3",
+        "x": 45.90217208862305,
+        "y": 0.0,
+        "z": -32.28107833862305,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.005_lev3",
+        "x": 42.00918197631836,
+        "y": 0.0,
+        "z": -32.28107833862305,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.006_lev3",
+        "x": 38.007530212402344,
+        "y": 0.0,
+        "z": -32.28107833862305,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel-screws.007_lev3",
+        "x": 34.07276916503906,
+        "y": 0.0,
+        "z": -32.28107833862305,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-autumn.006_lev3",
+        "x": 46.14596939086914,
+        "y": 0.0,
+        "z": -27.95376205444336,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "tree-tall.006_lev3",
+        "x": 45.435577392578125,
+        "y": 0.0,
+        "z": 0.4870750904083252,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.013_lev3",
+        "x": 32.31674575805664,
+        "y": 0.0,
+        "z": 16.828594207763672,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.014_lev3",
+        "x": 32.274261474609375,
+        "y": 0.0,
+        "z": 20.721351623535156,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.015_lev3",
+        "x": 32.2305908203125,
+        "y": 0.0,
+        "z": 24.722766876220703,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.016_lev3",
+        "x": 32.18765640258789,
+        "y": 0.0,
+        "z": 28.657291412353516,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.017_lev3",
+        "x": 32.2305908203125,
+        "y": 0.0,
+        "z": 8.963489532470703,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "metal-panel.018_lev3",
+        "x": 32.18765640258789,
+        "y": 0.0,
+        "z": 12.898015022277832,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "structure-metal-floor_lev3",
+        "x": 37.12615203857422,
+        "y": 0.0,
+        "z": 12.125511169433594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-small-roof_lev3",
+        "x": -15.750513076782227,
+        "y": 0.0,
+        "z": -45.480167388916016,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "torso.001_lev3",
+        "x": 39.608497619628906,
+        "y": 3.4511337280273438,
+        "z": -3.729720115661621,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "head_lev3",
+        "x": 39.608497619628906,
+        "y": 4.732660293579102,
+        "z": -3.729720115661621,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "torso.002_lev3",
+        "x": 39.608497619628906,
+        "y": 3.4511337280273438,
+        "z": -3.729720115661621,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "head.001_lev3",
+        "x": 39.608497619628906,
+        "y": 4.732660293579102,
+        "z": -3.729720115661621,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pine-crooked_lev3",
+        "x": -2.751871109008789,
+        "y": 0.0,
+        "z": -44.45494079589844,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pine-crooked.001_lev3",
+        "x": 16.51126480102539,
+        "y": 0.0,
+        "z": 36.450218200683594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pine.001_lev3",
+        "x": 25.18775749206543,
+        "y": 0.0,
+        "z": 36.485877990722656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-small-roof.001_lev3",
+        "x": -22.9153995513916,
+        "y": 0.0,
+        "z": -45.480167388916016,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pumpkin-carved_lev3",
+        "x": -44.71586227416992,
+        "y": 12.851563453674316,
+        "z": -12.179497718811035,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pillar-obelisk_lev3",
+        "x": 32.58607864379883,
+        "y": 0.0,
+        "z": -37.40095901489258,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pillar-obelisk.001_lev3",
+        "x": 28.773893356323242,
+        "y": 0.0,
+        "z": -41.846832275390625,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pillar-obelisk.002_lev3",
+        "x": 25.053211212158203,
+        "y": 0.0,
+        "z": -46.18599319458008,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "torso_lev3",
+        "x": 39.49401092529297,
+        "y": 4.810801982879639,
+        "z": -21.107494354248047,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "arm-right_lev3",
+        "x": 39.49472427368164,
+        "y": 5.71199369430542,
+        "z": -21.8586368560791,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "arm-left_lev3",
+        "x": 39.46326446533203,
+        "y": 5.71199369430542,
+        "z": -20.35698127746582,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "torso.003_lev3",
+        "x": 39.49401092529297,
+        "y": 4.810801982879639,
+        "z": -8.636225700378418,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "arm-right.001_lev3",
+        "x": 39.49472427368164,
+        "y": 5.71199369430542,
+        "z": -9.387369155883789,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "arm-left.001_lev3",
+        "x": 39.46326446533203,
+        "y": 5.71199369430542,
+        "z": -7.885711669921875,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pumpkin-carved.001_lev3",
+        "x": 39.850345611572266,
+        "y": 4.022146224975586,
+        "z": -14.897709846496582,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "rock-c.002_lev3",
+        "x": 42.88208770751953,
+        "y": 0.0,
+        "z": -42.65306091308594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "grave_lev3",
+        "x": -23.997541427612305,
+        "y": 0.0,
+        "z": 5.6263933181762695,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "grave.001_lev3",
+        "x": -23.997541427612305,
+        "y": 0.0,
+        "z": -4.202515602111816,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pumpkin-carved.002_lev3",
+        "x": -43.0224609375,
+        "y": 12.851563453674316,
+        "z": -40.11942672729492,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pumpkin-carved.003_lev3",
+        "x": 41.25101852416992,
+        "y": 15.217645645141602,
+        "z": -39.140647888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pumpkin-carved.004_lev3",
+        "x": -42.07008743286133,
+        "y": 11.55494213104248,
+        "z": 35.81195831298828,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-cross-large_lev3",
+        "x": -4.916701316833496,
+        "y": 0.0,
+        "z": 14.433757781982422,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-cross_lev3",
+        "x": 1.5838781595230103,
+        "y": 0.0,
+        "z": 15.377856254577637,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel_lev3",
+        "x": 0.0,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel.001_lev3",
+        "x": -2.0850820541381836,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel.002_lev3",
+        "x": -3.9067015647888184,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel.003_lev3",
+        "x": -5.991783618927002,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel.004_lev3",
+        "x": -8.051980972290039,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-bevel.005_lev3",
+        "x": -10.137063980102539,
+        "y": 0.0,
+        "z": 16.54610252380371,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-cross.001_lev3",
+        "x": -11.387365341186523,
+        "y": 0.0,
+        "z": 15.377856254577637,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative_lev3",
+        "x": 2.0264370441436768,
+        "y": 0.0,
+        "z": 13.625468254089355,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.001_lev3",
+        "x": 2.0264370441436768,
+        "y": 0.0,
+        "z": 11.812301635742188,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.002_lev3",
+        "x": 2.0264370441436768,
+        "y": 0.0,
+        "z": 9.751947402954102,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.003_lev3",
+        "x": 2.0264370441436768,
+        "y": 0.0,
+        "z": 7.938780784606934,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.004_lev3",
+        "x": -11.837709426879883,
+        "y": 0.0,
+        "z": 13.625468254089355,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.005_lev3",
+        "x": -11.837709426879883,
+        "y": 0.0,
+        "z": 11.812301635742188,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.006_lev3",
+        "x": -11.837709426879883,
+        "y": 0.0,
+        "z": 9.751947402954102,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-decorative.007_lev3",
+        "x": -11.837709426879883,
+        "y": 0.0,
+        "z": 7.938780784606934,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large.001_lev3",
+        "x": 7.537609100341797,
+        "y": -1.1058740615844727,
+        "z": 26.001083374023438,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large-roof_lev3",
+        "x": 7.535609245300293,
+        "y": 1.9768016338348389,
+        "z": 26.066688537597656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large.002_lev3",
+        "x": -0.2821345329284668,
+        "y": -1.1058740615844727,
+        "z": 26.001083374023438,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large-roof.001_lev3",
+        "x": -0.2841343879699707,
+        "y": 1.9768016338348389,
+        "z": 26.066688537597656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large.003_lev3",
+        "x": -9.153936386108398,
+        "y": -1.1058740615844727,
+        "z": 26.001083374023438,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large-roof.002_lev3",
+        "x": -9.155936241149902,
+        "y": 1.9768016338348389,
+        "z": 26.066688537597656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large.004_lev3",
+        "x": -16.97368049621582,
+        "y": -1.1058740615844727,
+        "z": 26.001083374023438,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "crypt-large-roof.003_lev3",
+        "x": -16.975679397583008,
+        "y": 1.9768016338348389,
+        "z": 26.066688537597656,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "pine-crooked.002_lev3",
+        "x": -23.756689071655273,
+        "y": 0.0,
+        "z": 21.871137619018555,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fence-damaged.001_lev3",
+        "x": 13.81602954864502,
+        "y": 0.0,
+        "z": 29.796897888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fence-damaged.002_lev3",
+        "x": 19.404972076416016,
+        "y": 0.0,
+        "z": 29.796897888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fence-damaged.003_lev3",
+        "x": 25.107065200805664,
+        "y": 0.0,
+        "z": 29.796897888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fence-damaged.005_lev3",
+        "x": -29.22936248779297,
+        "y": 0.0,
+        "z": 29.796897888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fence-damaged.006_lev3",
+        "x": -23.52726936340332,
+        "y": 0.0,
+        "z": 29.796897888183594,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "fire-basket_lev3",
+        "x": -4.761111259460449,
+        "y": 0.0,
+        "z": 9.839532852172852,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-cross-large.001_lev3",
+        "x": -1.5252621173858643,
+        "y": 0.0,
+        "z": 14.433757781982422,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "gravestone-cross-large.002_lev3",
+        "x": -8.17920207977295,
+        "y": 0.0,
+        "z": 14.433757781982422,
+        "level": 3,
         "role": "default"
     }
 ]

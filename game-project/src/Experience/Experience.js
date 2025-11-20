@@ -370,11 +370,17 @@ export default class Experience {
     // Resetear variables de World
     this.world.points = 0;
     this.world.robot.points = 0;
+    this.world.totalPoints = 0;  // Resetear puntos totales acumulados
     this.world.loader.prizes = [];
     this.world.defeatTriggered = false
 
     // Resetear nivel actual
     this.world.levelManager.currentLevel = 1;
+    
+    // Actualizar HUD
+    this.menu.setLevel?.(1);
+    this.menu.setStatus?.(`🎖️ Puntos: 0`);
+    this.menu.setTotalPoints?.(0);
 
     // Limpiar la escena
     this.world.clearCurrentScene();

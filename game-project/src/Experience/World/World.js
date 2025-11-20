@@ -11,6 +11,7 @@ import MobileControls from '../../controls/MobileControls.js'
 import LevelManager from './LevelManager.js';
 import BlockPrefab from './BlockPrefab.js'
 import FinalPrizeParticles from '../Utils/FinalPrizeParticles.js'
+import PortalEffects from '../Utils/PortalEffects.js'
 import Enemy from './Enemy.js'
 
 
@@ -24,6 +25,7 @@ export default class World {
         this.finalPrizeActivated = false
         this.gameStarted = false
         this.enemies = []
+        this.totalPoints = 0  // Puntos acumulados de todos los niveles
 
         this.coinSound = new Sound('/sounds/coin.ogg')
         this.ambientSound = new AmbientSound('/sounds/ambiente.mp3')
@@ -46,14 +48,24 @@ export default class World {
             this.loader = new ToyCarLoader(this.experience)
             await this.loader.loadFromAPI()
 
+            // Inicializar HUD con nivel 1 y puntos iniciales
+            this.experience.menu.setLevel?.(1);
+            this.experience.menu.setStatus?.(`🎖️ Puntos: 0`);
+            this.experience.menu.setTotalPoints?.(0);
+
             this.fox = new Fox(this.experience)
             this.robot = new Robot(this.experience)
 
-            // Enemigos múltiples: plantilla y spawn lejos del jugador
-            this.enemyTemplate = new THREE.Mesh(
-                new THREE.BoxGeometry(1, 1, 1),
-                new THREE.MeshStandardMaterial({ color: 0xff0000 })
-            )
+            // Enemigos múltiples: usar modelo Skeleton
+            if (this.resources.items.enemyModel) {
+                this.enemyTemplate = this.resources.items.enemyModel.scene
+            } else {
+                // Fallback: cubo rojo si el modelo no está cargado
+                this.enemyTemplate = new THREE.Mesh(
+                    new THREE.BoxGeometry(1, 1, 1),
+                    new THREE.MeshStandardMaterial({ color: 0xff0000 })
+                )
+            }
             const enemiesCountEnv = parseInt(import.meta.env.VITE_ENEMIES_COUNT || '3', 10)
             const enemiesCount = Number.isFinite(enemiesCountEnv) && enemiesCountEnv > 0 ? enemiesCountEnv : 3
             this.spawnEnemies(enemiesCount)
@@ -226,43 +238,15 @@ export default class World {
                                 experience: this.experience
                             })
 
-                            // Faro visual
-                            this.discoRaysGroup = new THREE.Group()
-                            this.scene.add(this.discoRaysGroup)
-
-                            const rayMaterial = new THREE.MeshBasicMaterial({
-                                color: 0xaa00ff,
-                                transparent: true,
-                                opacity: 0.25,
-                                side: THREE.DoubleSide
-                            })
-
-                            const rayCount = 4
-                            for (let i = 0; i < rayCount; i++) {
-                                const cone = new THREE.ConeGeometry(0.2, 4, 6, 1, true)
-                                const ray = new THREE.Mesh(cone, rayMaterial)
-
-                                ray.position.set(0, 2, 0)
-                                ray.rotation.x = Math.PI / 2
-                                ray.rotation.z = (i * Math.PI * 2) / rayCount
-
-                                const spot = new THREE.SpotLight(0xaa00ff, 2, 12, Math.PI / 7, 0.2, 0.5)
-                                spot.castShadow = false
-                                spot.shadow.mapSize.set(1, 1)
-                                spot.position.copy(ray.position)
-                                spot.target.position.set(
-                                    Math.cos(ray.rotation.z) * 10,
-                                    2,
-                                    Math.sin(ray.rotation.z) * 10
-                                )
-
-                                ray.userData.spot = spot
-                                this.discoRaysGroup.add(ray)
-                                this.discoRaysGroup.add(spot)
-                                this.discoRaysGroup.add(spot.target)
+                            // Efectos mejorados del portal
+                            if (this.portalEffects) {
+                                this.portalEffects.dispose()
                             }
-
-                            this.discoRaysGroup.position.copy(finalCoin.pivot.position)
+                            this.portalEffects = new PortalEffects({
+                                scene: this.scene,
+                                position: finalCoin.pivot.position,
+                                experience: this.experience
+                            })
 
                             if (window.userInteracted) {
                                 this.portalSound.play()
@@ -275,9 +259,18 @@ export default class World {
 
                 if (prize.role === "finalPrize") {
                     if (this.levelManager.currentLevel < this.levelManager.totalLevels) {
+                        // Sumar puntos del nivel actual al total antes de cambiar de nivel
+                        this.totalPoints += this.points
+                        this.experience.menu.setTotalPoints?.(this.totalPoints)
+                        
                         this.levelManager.nextLevel()
                         this.points = 0
                         this.robot.points = 0
+                        
+                        // Actualizar HUD con el nuevo nivel
+                        this.experience.menu.setLevel?.(this.levelManager.currentLevel)
+                        this.experience.menu.setStatus?.(`🎖️ Puntos: ${this.points}`)
+                        this.experience.menu.setTotalPoints?.(this.totalPoints)
                     } else {
                         const elapsed = this.experience.tracker.stop()
                         this.experience.tracker.saveTime(elapsed)
@@ -302,7 +295,12 @@ export default class World {
                     this.coinSound.play()
                 }
 
+                // Actualizar puntos del nivel actual
                 this.experience.menu.setStatus?.(`🎖️ Puntos: ${this.points}`)
+                
+                // Actualizar puntos totales (suma del nivel actual + total acumulado)
+                const currentTotal = this.totalPoints + this.points
+                this.experience.menu.setTotalPoints?.(currentTotal)
             }
         })
 
@@ -326,43 +324,15 @@ export default class World {
                         experience: this.experience
                     })
 
-                    // Faro visual
-                    this.discoRaysGroup = new THREE.Group()
-                    this.scene.add(this.discoRaysGroup)
-
-                    const rayMaterial = new THREE.MeshBasicMaterial({
-                        color: 0xaa00ff,
-                        transparent: true,
-                        opacity: 0.25,
-                        side: THREE.DoubleSide
-                    })
-
-                    const rayCount = 4
-                    for (let i = 0; i < rayCount; i++) {
-                        const cone = new THREE.ConeGeometry(0.2, 4, 6, 1, true)
-                        const ray = new THREE.Mesh(cone, rayMaterial)
-
-                        ray.position.set(0, 2, 0)
-                        ray.rotation.x = Math.PI / 2
-                        ray.rotation.z = (i * Math.PI * 2) / rayCount
-
-                        const spot = new THREE.SpotLight(0xaa00ff, 2, 12, Math.PI / 7, 0.2, 0.5)
-                        spot.castShadow = false
-                        spot.shadow.mapSize.set(1, 1)
-                        spot.position.copy(ray.position)
-                        spot.target.position.set(
-                            Math.cos(ray.rotation.z) * 10,
-                            2,
-                            Math.sin(ray.rotation.z) * 10
-                        )
-
-                        ray.userData.spot = spot
-                        this.discoRaysGroup.add(ray)
-                        this.discoRaysGroup.add(spot)
-                        this.discoRaysGroup.add(spot.target)
+                    // Efectos mejorados del portal
+                    if (this.portalEffects) {
+                        this.portalEffects.dispose()
                     }
-
-                    this.discoRaysGroup.position.copy(finalCoin.pivot.position)
+                    this.portalEffects = new PortalEffects({
+                        scene: this.scene,
+                        position: finalCoin.pivot.position,
+                        experience: this.experience
+                    })
 
                     if (window.userInteracted) {
                         this.portalSound.play()
@@ -374,10 +344,7 @@ export default class World {
         }
 
 
-        // Faro rotación
-        if (this.discoRaysGroup) {
-            this.discoRaysGroup.rotation.y += delta * 0.5
-        }
+        // Los efectos del portal se actualizan automáticamente en su propia clase
 
         // Optimización física por distancia
         const playerPos = this.experience.renderer.instance.xr.isPresenting
@@ -449,7 +416,14 @@ export default class World {
             this.points = 0;
             this.robot.points = 0;
             this.finalPrizeActivated = false;
+            
+            // Actualizar HUD con nivel y puntos
+            this.experience.menu.setLevel?.(level);
             this.experience.menu.setStatus?.(`🎖️ Puntos: ${this.points}`);
+            
+            // Mostrar puntos totales acumulados
+            const currentTotal = this.totalPoints + this.points;
+            this.experience.menu.setTotalPoints?.(currentTotal);
 
             if (data.blocks) {
                 const publicPath = (p) => {
@@ -587,17 +561,12 @@ export default class World {
         })
 
 
-        /** Esto es de faro para limpienza */
-        if (this.discoRaysGroup) {
-            this.discoRaysGroup.children.forEach(obj => {
-                if (obj.geometry) obj.geometry.dispose();
-                if (obj.material) obj.material.dispose();
-            });
-            this.scene.remove(this.discoRaysGroup);
-            this.discoRaysGroup = null;
+        /** Limpiar efectos del portal */
+        if (this.portalEffects) {
+            this.portalEffects.dispose();
+            this.portalEffects = null;
         }
-
-        /** Fin faro para limpianza */
+        /** Fin limpieza efectos del portal */
 
     }
 

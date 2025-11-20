@@ -114,11 +114,11 @@ export default class CircularMenu {
     })
     document.body.appendChild(this.timer)
 
-    // HUD: Puntos
-    this.status = document.createElement('div')
-    this.status.id = 'hud-points'
-    this.status.innerText = '🎖️ Puntos: 0'
-    Object.assign(this.status.style, {
+    // HUD: Nivel
+    this.levelLabel = document.createElement('div')
+    this.levelLabel.id = 'hud-level'
+    this.levelLabel.innerText = '📍 Nivel: 1'
+    Object.assign(this.levelLabel.style, {
       position: 'fixed',
       top: '16px',
       right: '20px',
@@ -132,7 +132,47 @@ export default class CircularMenu {
       fontFamily: 'monospace',
       pointerEvents: 'none'
     })
+    document.body.appendChild(this.levelLabel)
+
+    // HUD: Puntos del nivel actual
+    this.status = document.createElement('div')
+    this.status.id = 'hud-points'
+    this.status.innerText = '🎖️ Puntos: 0'
+    Object.assign(this.status.style, {
+      position: 'fixed',
+      top: '50px',
+      right: '20px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+      background: 'rgba(0,0,0,0.6)',
+      color: 'white',
+      padding: '6px 12px',
+      borderRadius: '8px',
+      zIndex: 9999,
+      fontFamily: 'monospace',
+      pointerEvents: 'none'
+    })
     document.body.appendChild(this.status)
+
+    // HUD: Puntos totales acumulados
+    this.totalPointsLabel = document.createElement('div')
+    this.totalPointsLabel.id = 'hud-total-points'
+    this.totalPointsLabel.innerText = '⭐ Total: 0'
+    Object.assign(this.totalPointsLabel.style, {
+      position: 'fixed',
+      top: '84px',
+      right: '20px',
+      fontSize: '16px',
+      fontWeight: 'bold',
+      background: 'rgba(0,0,0,0.6)',
+      color: '#FFD700',
+      padding: '6px 12px',
+      borderRadius: '8px',
+      zIndex: 9999,
+      fontFamily: 'monospace',
+      pointerEvents: 'none'
+    })
+    document.body.appendChild(this.totalPointsLabel)
 
     // HUD: Jugadores
 
@@ -178,12 +218,26 @@ export default class CircularMenu {
       boxShadow: '0 0 20px #00fff7'
     })
 
+    // Datos del desarrollador - Personaliza estos valores
+    const developerInfo = {
+      name: 'Edgar Andres Torres Muñoz - 809977',
+      university: 'UCC Campus Pasto',
+      project: 'Proyecto interactivo Video Juego Educativo con Three.js',
+      email: 'atmunoz1927@gmail.com',
+      // Opcional: puedes agregar más campos
+      // studentId: 'Tu ID de Estudiante',
+      // course: 'Nombre del Curso',
+      // year: '2025'
+    }
+
     this.aboutContainer.innerHTML = `
           <h2 style="margin-bottom: 10px;">👨‍💻 Desarrollador</h2>
-          <p style="margin: 0;">Gustavo Sánchez Rodríguez</p>
-          <p style="margin: 0; font-size: 14px;">Universidad Cooperativa de Colombia</p>
-          <p style="margin: 10px 0 0; font-size: 13px;">Proyecto interactivo educativo con Three.js</p>
-          <p style="margin: 10px 0 0; font-size: 13px;">guswillsan@gmail.com</p>
+          <p style="margin: 0; font-weight: bold; font-size: 16px;">${developerInfo.name}</p>
+          <p style="margin: 5px 0 0; font-size: 14px; color: #00fff7;">${developerInfo.university}</p>
+          <p style="margin: 10px 0 0; font-size: 13px; color: #ccc;">${developerInfo.project}</p>
+          <p style="margin: 8px 0 0; font-size: 13px;">
+            <a href="mailto:${developerInfo.email}" style="color: #00fff7; text-decoration: none;">${developerInfo.email}</a>
+          </p>
           <button style="
             margin-top: 12px;
             padding: 6px 14px;
@@ -193,7 +247,8 @@ export default class CircularMenu {
             border: none;
             border-radius: 6px;
             cursor: pointer;
-          ">Cerrar</button>
+            transition: background 0.3s;
+          " onmouseover="this.style.background='#00ccff'" onmouseout="this.style.background='#00fff7'">Cerrar</button>
         `
 
     const closeBtn = this.aboutContainer.querySelector('button')
@@ -250,11 +305,28 @@ export default class CircularMenu {
     }
   }
 
+  // Actualizar nivel actual
+  setLevel(level) {
+    if (this.levelLabel) {
+      this.levelLabel.innerText = `📍 Nivel: ${level}`
+    }
+  }
+
+  // Actualizar puntos totales acumulados
+  setTotalPoints(totalPoints) {
+    if (this.totalPointsLabel) {
+      this.totalPointsLabel.innerText = `⭐ Total: ${totalPoints}`
+    }
+  }
+
 
   destroy() {
     this.toggleButton?.remove()
     this.actionButtons?.forEach(btn => btn.remove())
     this.timer?.remove()
     this.status?.remove()
+    this.levelLabel?.remove()
+    this.totalPointsLabel?.remove()
+    this.playersLabel?.remove()
   }
 }
