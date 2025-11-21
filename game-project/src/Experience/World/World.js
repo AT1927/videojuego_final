@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { Howler } from 'howler'
 import Environment from './Environment.js'
 import Fox from './Fox.js'
 import Robot from './Robot.js'
@@ -31,7 +32,8 @@ export default class World {
         this.ambientSound = new AmbientSound('/sounds/ambiente.mp3')
         this.winner = new Sound('/sounds/winner.mp3')
         this.portalSound = new Sound('/sounds/portal.mp3')
-        this.loseSound = new Sound('/sounds/lose.ogg')
+        this.loseSound = new Sound('/sounds/lose.ogg', { loop: false }) // Asegurar que no tenga loop
+        this.defeatTriggered = false // Inicializar flag de derrota
 
 
         this.allowPrizePickup = false
@@ -66,9 +68,8 @@ export default class World {
                     new THREE.MeshStandardMaterial({ color: 0xff0000 })
                 )
             }
-            const enemiesCountEnv = parseInt(import.meta.env.VITE_ENEMIES_COUNT || '3', 10)
-            const enemiesCount = Number.isFinite(enemiesCountEnv) && enemiesCountEnv > 0 ? enemiesCountEnv : 3
-            this.spawnEnemies(enemiesCount)
+            // No spawnear enemigos aquí, se hará después de cargar el nivel
+            // Los enemigos se crearán en loadLevel() según el nivel actual
 
             this.experience.vr.bindCharacter(this.robot)
             this.thirdPersonCamera = new ThirdPersonCamera(this.experience, this.robot.group)
@@ -96,12 +97,9 @@ export default class World {
         })
     }
 
-    // Crear varios enemigos en posiciones alejadas del jugador para evitar atascos iniciales
+    // Crear varios enemigos en posiciones específicas por nivel
     spawnEnemies(count = 3) {
-        if (!this.robot?.body?.position) return
-        const playerPos = this.robot.body.position
-        const minRadius = 25
-        const maxRadius = 40
+        const currentLevel = this.levelManager.currentLevel
 
         // Limpia anteriores si existen
         if (this.enemies?.length) {
@@ -109,25 +107,74 @@ export default class World {
             this.enemies = []
         }
 
-        for (let i = 0; i < count; i++) {
-            const angle = Math.random() * Math.PI * 2
-            const radius = minRadius + Math.random() * (maxRadius - minRadius)
-            const x = playerPos.x + Math.cos(angle) * radius
-            const z = playerPos.z + Math.sin(angle) * radius
-            const y = 1.5
+        // Obtener posición del jugador si está disponible, sino usar posición por defecto
+        // IMPORTANTE: No usar la posición actual del jugador, usar posición por defecto del nivel
+        let playerPos = { x: -17, y: 1.5, z: -67 } // Posición por defecto del nivel 1
+        
+        // Solo usar posición del jugador si está lejos del spawn inicial
+        if (this.robot?.body?.position) {
+            const spawnDistance = Math.sqrt(
+                Math.pow(this.robot.body.position.x - (-17), 2) + 
+                Math.pow(this.robot.body.position.z - (-67), 2)
+            )
+            // Solo usar posición del jugador si está a más de 10 unidades del spawn
+            if (spawnDistance > 10) {
+                playerPos = this.robot.body.position
+            }
+        }
+
+        // Posiciones específicas por nivel (alejadas del jugador y del spawn inicial)
+        const levelEnemyPositions = {
+            1: [
+                { x: 10, y: 1.5, z: 10 },
+                { x: -15, y: 1.5, z: 20 },
+                { x: 25, y: 1.5, z: -5 }
+            ],
+            2: [
+                { x: -25, y: 1.5, z: -45 },
+                { x: 15, y: 1.5, z: -25 },
+                { x: -5, y: 1.5, z: -75 }
+            ],
+            3: [
+                { x: 15, y: 1.5, z: 15 },
+                { x: -20, y: 1.5, z: 10 },
+                { x: 10, y: 1.5, z: -15 }
+            ]
+        }
+
+        // Obtener posiciones para el nivel actual
+        const positions = levelEnemyPositions[currentLevel] || []
+        
+        // Si no hay suficientes posiciones definidas, generar aleatorias alejadas del jugador
+        const enemyCount = Math.min(count, positions.length || count)
+        
+        for (let i = 0; i < enemyCount; i++) {
+            let position
+            if (positions[i]) {
+                // Usar posición específica del nivel (absoluta, no relativa al jugador)
+                position = new THREE.Vector3(positions[i].x, positions[i].y, positions[i].z)
+            } else {
+                // Fallback: posición aleatoria alejada del jugador
+                const angle = Math.random() * Math.PI * 2
+                const radius = 25 + Math.random() * 15
+                const x = playerPos.x + Math.cos(angle) * radius
+                const z = playerPos.z + Math.sin(angle) * radius
+                position = new THREE.Vector3(x, 1.5, z)
+            }
 
             const enemy = new Enemy({
                 scene: this.scene,
                 physicsWorld: this.experience.physics.world,
                 playerRef: this.robot,
                 model: this.enemyTemplate,
-                position: new THREE.Vector3(x, y, z),
+                position: position,
                 experience: this.experience
             })
 
             // Pequeño delay para que no ataquen todos a la vez
             enemy.delayActivation = 1.0 + i * 0.5
             this.enemies.push(enemy)
+            console.log(`🤖 Enemigo ${i + 1} creado en nivel ${currentLevel} en posición: (${position.x.toFixed(2)}, ${position.y.toFixed(2)}, ${position.z.toFixed(2)})`)
         }
     }
 
@@ -156,10 +203,16 @@ export default class World {
 
                 if (window.userInteracted && this.loseSound) {
                     this.loseSound.play()
+                    // Detener el sonido después de reproducirlo una vez (no loop)
+                    setTimeout(() => {
+                        if (this.loseSound) {
+                            this.loseSound.stop()
+                        }
+                    }, 2000) // Detener después de 2 segundos
                 }
 
                 const firstEnemy = this.enemies?.[0]
-                const enemyMesh = firstEnemy?.model || firstEnemy?.group
+                const enemyMesh = firstEnemy?.group || firstEnemy?.model
                 if (enemyMesh) {
                     enemyMesh.scale.set(1.3, 1.3, 1.3)
                     setTimeout(() => {
@@ -173,11 +226,37 @@ export default class World {
                     buttons: [
                         {
                             text: '🔁 Reintentar',
-                            onClick: () => this.experience.resetGameToFirstLevel()
+                            onClick: () => {
+                                // Detener TODOS los sonidos de Howler globalmente
+                                Howler.stop()
+                                // Detener sonido específico también
+                                if (this.loseSound) {
+                                    this.loseSound.stop()
+                                }
+                                // Resetear flag para evitar reproducción automática
+                                this.defeatTriggered = false
+                                // Pequeño delay para asegurar que el sonido se detenga
+                                setTimeout(() => {
+                                    this.experience.resetGame()
+                                }, 150)
+                            }
                         },
                         {
                             text: '❌ Salir',
-                            onClick: () => this.experience.resetGame()
+                            onClick: () => {
+                                // Detener TODOS los sonidos de Howler globalmente
+                                Howler.stop()
+                                // Detener sonido específico también
+                                if (this.loseSound) {
+                                    this.loseSound.stop()
+                                }
+                                // Resetear flag para evitar reproducción automática
+                                this.defeatTriggered = false
+                                // Pequeño delay para asegurar que el sonido se detenga
+                                setTimeout(() => {
+                                    this.experience.resetGame()
+                                }, 150)
+                            }
                         }
                     ]
                 })
@@ -272,6 +351,7 @@ export default class World {
                         this.experience.menu.setStatus?.(`🎖️ Puntos: ${this.points}`)
                         this.experience.menu.setTotalPoints?.(this.totalPoints)
                     } else {
+                        // Juego completado - nivel 3 terminado
                         const elapsed = this.experience.tracker.stop()
                         this.experience.tracker.saveTime(elapsed)
                         this.experience.tracker.showEndGameModal(elapsed)
@@ -279,6 +359,17 @@ export default class World {
                         this.experience.obstacleWavesDisabled = true
                         clearTimeout(this.experience.obstacleWaveTimeout)
                         this.experience.raycaster?.removeAllObstacles()
+
+                        // 💀 Destruir todos los enemigos cuando se completa el juego
+                        if (Array.isArray(this.enemies)) {
+                            this.enemies.forEach(enemy => {
+                                if (enemy && typeof enemy.destroy === 'function') {
+                                    enemy.destroy()
+                                }
+                            })
+                            this.enemies = []
+                            console.log('💀 Todos los enemigos eliminados al completar el juego')
+                        }
 
                         if (window.userInteracted) {
                             this.winner.play()

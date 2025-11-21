@@ -51,8 +51,13 @@ export default class Sound {
     }
 
     stop() {
-        this.sound.stop()
-        this._retryCount = 0
+        if (this.sound) {
+            // Detener todas las instancias de este sonido
+            this.sound.stop()
+            // Asegurar que no se reproduzca de nuevo
+            this.sound.unload()
+            this._retryCount = 0
+        }
     }
 
     setVolume(volume) {

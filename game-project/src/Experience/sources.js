@@ -34,7 +34,7 @@ export default [
     {
         name: 'enemyModel',
         type: 'gltfModel',
-        path: '/models/Skeleton/Skeleton.glb'
+        path: '/models/Frog/Frog.glb'
     },
     {
         "name": "baked_lev1",

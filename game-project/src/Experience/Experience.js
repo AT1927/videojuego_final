@@ -321,6 +321,36 @@ export default class Experience {
 
   resetGame() {
     console.log('♻️ Reiniciando juego...')
+    
+    // CRÍTICO: Detener TODOS los sonidos de Howler globalmente
+    try {
+      Howler.stop() // Detener todos los sonidos de Howler
+    } catch (e) {
+      console.warn('Error deteniendo sonidos de Howler:', e)
+    }
+    
+    // Detener sonidos específicos del World
+    if (this.world?.loseSound) {
+      this.world.loseSound.stop()
+    }
+    if (this.world?.ambientSound && this.world.ambientSound.isPlaying) {
+      this.world.ambientSound.toggle() // Detener sonido ambiente
+    }
+    if (this.world?.coinSound) {
+      this.world.coinSound.stop()
+    }
+    if (this.world?.portalSound) {
+      this.world.portalSound.stop()
+    }
+    if (this.world?.winner) {
+      this.world.winner.stop()
+    }
+    
+    // Resetear flag de derrota
+    if (this.world) {
+      this.world.defeatTriggered = false
+    }
+    
     // Notificar desconexión al servidor
     this.socketManager?.socket?.disconnect()
 
@@ -356,44 +386,104 @@ export default class Experience {
 
 
   resetGameToFirstLevel() {
-    console.log('♻️ Reiniciando al nivel');
+    console.log('♻️ Reiniciando al nivel 1');
 
-    // 💀 Destruir enemigo previo si existe
+    // Cerrar el modal primero para evitar ciclos
+    if (this.modal && typeof this.modal.hide === 'function') {
+      this.modal.hide()
+    }
+
+    // Resetear flags CRÍTICOS primero
+    this.world.defeatTriggered = false
+    this.world.gameStarted = false
+
+    // 💀 Destruir enemigos previos si existen
     if (Array.isArray(this.world.enemies)) {
-      this.world.enemies.forEach(e => e?.destroy?.())
+      this.world.enemies.forEach(e => {
+        try {
+          e?.destroy?.()
+        } catch (err) {
+          console.warn('Error destruyendo enemigo:', err)
+        }
+      })
       this.world.enemies = []
     } else {
-      this.world.enemy?.destroy()
+      try {
+        this.world.enemy?.destroy()
+      } catch (err) {
+        console.warn('Error destruyendo enemigo único:', err)
+      }
       this.world.enemy = null
     }
 
     // Resetear variables de World
     this.world.points = 0;
-    this.world.robot.points = 0;
-    this.world.totalPoints = 0;  // Resetear puntos totales acumulados
-    this.world.loader.prizes = [];
-    this.world.defeatTriggered = false
+    if (this.world.robot) {
+      this.world.robot.points = 0;
+    }
+    this.world.totalPoints = 0;
+    if (this.world.loader) {
+      this.world.loader.prizes = [];
+    }
 
     // Resetear nivel actual
-    this.world.levelManager.currentLevel = 1;
+    if (this.world.levelManager) {
+      this.world.levelManager.currentLevel = 1;
+    }
     
     // Actualizar HUD
-    this.menu.setLevel?.(1);
-    this.menu.setStatus?.(`🎖️ Puntos: 0`);
-    this.menu.setTotalPoints?.(0);
+    if (this.menu) {
+      this.menu.setLevel?.(1);
+      this.menu.setStatus?.(`🎖️ Puntos: 0`);
+      this.menu.setTotalPoints?.(0);
+    }
 
     // Limpiar la escena
-    this.world.clearCurrentScene();
+    try {
+      this.world.clearCurrentScene();
+    } catch (err) {
+      console.warn('Error limpiando escena:', err)
+    }
 
-    // Cargar nivel 1 de nuevo
-    this.world.loadLevel(1);
-
-    // Reiniciar el seguimiento de tiempo
-    this.tracker.destroy(); // Detener el loop anterior
-    this.tracker = new GameTracker({ modal: this.modal, menu: this.menu });
-    this.tracker.start();
-
-    console.log('✅ Juego reiniciado en nivel 1.');
+    // Usar un delay más largo para asegurar limpieza completa
+    setTimeout(async () => {
+      try {
+        // Cargar nivel 1 de nuevo
+        await this.world.loadLevel(1)
+        
+        // Esperar un poco más para que el jugador se posicione
+        await new Promise(resolve => setTimeout(resolve, 200))
+        
+        // Recrear enemigos después de cargar el nivel y posicionar al jugador
+        const enemiesCountEnv = parseInt(import.meta.env.VITE_ENEMIES_COUNT || '3', 10)
+        const enemiesCount = Number.isFinite(enemiesCountEnv) && enemiesCountEnv > 0 ? enemiesCountEnv : 3
+        this.world.spawnEnemies(enemiesCount)
+        
+        // Reiniciar el seguimiento de tiempo después de cargar el nivel
+        if (this.tracker) {
+          try {
+            this.tracker.destroy();
+          } catch (err) {
+            console.warn('Error destruyendo tracker:', err)
+          }
+        }
+        this.tracker = new GameTracker({ modal: this.modal, menu: this.menu });
+        this.tracker.start();
+        
+        // Reiniciar el juego después de un pequeño delay adicional
+        setTimeout(() => {
+          this.world.gameStarted = true
+          this.world.defeatTriggered = false // Asegurar que esté reseteado
+          console.log('✅ Juego reiniciado en nivel 1.');
+        }, 300)
+      } catch (err) {
+        console.error('❌ Error al cargar el nivel:', err)
+        // Intentar reiniciar de nuevo después de un error
+        setTimeout(() => {
+          this.resetGameToFirstLevel()
+        }, 1000)
+      }
+    }, 300)
   }
 
 

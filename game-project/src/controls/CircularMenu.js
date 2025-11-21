@@ -224,10 +224,6 @@ export default class CircularMenu {
       university: 'UCC Campus Pasto',
       project: 'Proyecto interactivo Video Juego Educativo con Three.js',
       email: 'atmunoz1927@gmail.com',
-      // Opcional: puedes agregar más campos
-      // studentId: 'Tu ID de Estudiante',
-      // course: 'Nombre del Curso',
-      // year: '2025'
     }
 
     this.aboutContainer.innerHTML = `
