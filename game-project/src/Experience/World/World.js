@@ -128,7 +128,7 @@ export default class World {
         } else {
             // Fallback a spawn por nivel
             if (currentLevel === 2) {
-                spawnPoint = { x: -17, y: 1.5, z: -67 } // Nivel 2
+                spawnPoint = { x: -7, y: 1, z: -15 } // Nivel 2
             } else if (currentLevel === 3) {
                 spawnPoint = { x: 5, y: 1.5, z: 5 } // Nivel 3
             }
@@ -599,6 +599,19 @@ export default class World {
             console.log(`   - La moneda finalPrize se activará cuando se recojan las ${this.totalDefaultCoins} monedas default`);
 
             this.resetRobotPosition(spawnPoint);
+            
+            // Reposicionar el Fox según el nivel
+            if (this.fox && this.fox.model) {
+                let foxPosition;
+                if (level === 2) {
+                    foxPosition = { x: -10, y: 0, z: -60 }; // Cambia estas coordenadas para el Fox en nivel 2
+                } else if (level === 3) {
+                    foxPosition = { x: 10, y: 0, z: 10 }; // Posición del Fox en nivel 3
+                } else {
+                    foxPosition = { x: -10, y: 0, z: -60 }; // Posición del Fox en nivel 1
+                }
+                this.fox.model.position.set(foxPosition.x, foxPosition.y, foxPosition.z);
+            }
             
             // Crear enemigos después de cargar el nivel y posicionar al jugador
             // Delay más largo para asegurar que el jugador esté completamente posicionado

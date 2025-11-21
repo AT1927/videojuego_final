@@ -29,7 +29,7 @@ export default class Fox {
     setModel() {
         this.model = this.resource.scene
         this.model.scale.set(0.02, 0.02, 0.02)
-        this.model.position.set(3, 0, 0)
+        this.model.position.set(10, 0, 0)
         this.scene.add(this.model)
         //Activando la sobra de fox
         this.model.traverse((child) => {
