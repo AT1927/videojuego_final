@@ -504,6 +504,30 @@
         "role": "default"
     },
     {
+        "name": "coin_structure_detailed_lev1",
+        "x": -27.182847488845617,
+        "y": 1,
+        "z": 7.5405242113214275,
+        "level": 1,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev1",
+        "x": -16.160319352478787,
+        "y": 1,
+        "z": -12.82937803735048,
+        "level": 1,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev1",
+        "x": 16.333258946166467,
+        "y": 1,
+        "z": -13.335663669418116,
+        "level": 1,
+        "role": "default"
+    },
+    {
         "name": "coin_structure_diagonal_lev1",
         "x": 36.68994651547916,
         "y": 1,
@@ -1455,7 +1479,31 @@
         "level": 2,
         "role": "default"
     },
-        {
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": -8.776437263906779,
+        "y": 1,
+        "z": -15.30314884456412,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": 32.47512024256185,
+        "y": 1,
+        "z": 1.3449952399675027,
+        "level": 2,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": -26.725406841449974,
+        "y": 1,
+        "z": 0.6740154277317956,
+        "level": 2,
+        "role": "default"
+    },
+    {
         "name": "coin_structure_diagonal_lev2",
         "x": -0.5031699033820978,
         "y": 1,
@@ -2305,9 +2353,33 @@
     },
     {
         "name": "coin_structure_detailed_lev2_lev3",
-        "x": 4.005804061889648,
-        "y": 1.3172268867492676,
-        "z": 15.909136772155762,
+        "x": -34.3110800965545,
+        "y": 1,
+        "z": 17.239363270381798,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": -7.289860927389015,
+        "y": 1,
+        "z": -15.918549749965116,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": -25.39378421868097,
+        "y": 1,
+        "z": 2.6707054148061076,
+        "level": 3,
+        "role": "default"
+    },
+    {
+        "name": "coin_structure_detailed_lev2_lev3",
+        "x": 32.5416452604995,
+        "y": 1,
+        "z": 5.855293197781386,
         "level": 3,
         "role": "default"
     },

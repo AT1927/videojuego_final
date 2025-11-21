@@ -454,10 +454,7 @@ export default class Experience {
         // Esperar un poco más para que el jugador se posicione
         await new Promise(resolve => setTimeout(resolve, 200))
         
-        // Recrear enemigos después de cargar el nivel y posicionar al jugador
-        const enemiesCountEnv = parseInt(import.meta.env.VITE_ENEMIES_COUNT || '3', 10)
-        const enemiesCount = Number.isFinite(enemiesCountEnv) && enemiesCountEnv > 0 ? enemiesCountEnv : 3
-        this.world.spawnEnemies(enemiesCount)
+        // Los enemigos se crearán automáticamente en loadLevel()
         
         // Reiniciar el seguimiento de tiempo después de cargar el nivel
         if (this.tracker) {

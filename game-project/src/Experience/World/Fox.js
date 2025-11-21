@@ -68,7 +68,7 @@ export default class Fox {
             newAction.reset()
             newAction.play()
             if (oldAction && oldAction !== newAction) {
-                newAction.crossFadeFrom(oldAction, 0.3) // Transición más suave
+                newAction.crossFadeFrom(oldAction, 0.5) // Transición más suave
             }
 
             this.animation.actions.current = newAction

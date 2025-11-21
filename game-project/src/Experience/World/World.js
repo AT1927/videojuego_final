@@ -98,7 +98,7 @@ export default class World {
     }
 
     // Crear varios enemigos en posiciones específicas por nivel
-    spawnEnemies(count = 3) {
+    spawnEnemies() {
         const currentLevel = this.levelManager.currentLevel
 
         // Limpia anteriores si existen
@@ -107,75 +107,116 @@ export default class World {
             this.enemies = []
         }
 
-        // Obtener posición del jugador si está disponible, sino usar posición por defecto
-        // IMPORTANTE: No usar la posición actual del jugador, usar posición por defecto del nivel
-        let playerPos = { x: -17, y: 1.5, z: -67 } // Posición por defecto del nivel 1
+        // Cantidad de enemigos por nivel: Nivel 1 = 1, Nivel 2 = 3, Nivel 3 = 5
+        const enemiesPerLevel = {
+            1: 1,
+            2: 3,
+            3: 5
+        }
         
-        // Solo usar posición del jugador si está lejos del spawn inicial
+        const enemyCount = enemiesPerLevel[currentLevel] || 1
+
+        // Obtener posición del spawn del jugador según el nivel
+        // Usar la posición real del jugador si está disponible, sino usar spawn por defecto
+        let spawnPoint = { x: -17, y: 1.5, z: -67 } // Nivel 1 por defecto
         if (this.robot?.body?.position) {
-            const spawnDistance = Math.sqrt(
-                Math.pow(this.robot.body.position.x - (-17), 2) + 
-                Math.pow(this.robot.body.position.z - (-67), 2)
-            )
-            // Solo usar posición del jugador si está a más de 10 unidades del spawn
-            if (spawnDistance > 10) {
-                playerPos = this.robot.body.position
+            spawnPoint = {
+                x: this.robot.body.position.x,
+                y: this.robot.body.position.y,
+                z: this.robot.body.position.z
+            }
+        } else {
+            // Fallback a spawn por nivel
+            if (currentLevel === 2) {
+                spawnPoint = { x: -17, y: 1.5, z: -67 } // Nivel 2
+            } else if (currentLevel === 3) {
+                spawnPoint = { x: 5, y: 1.5, z: 5 } // Nivel 3
             }
         }
 
-        // Posiciones específicas por nivel (alejadas del jugador y del spawn inicial)
+        // Posiciones específicas por nivel (alejadas del spawn del jugador)
+        // Distancia mínima de 25 unidades del spawn para evitar colisiones iniciales
         const levelEnemyPositions = {
             1: [
-                { x: 10, y: 1.5, z: 10 },
-                { x: -15, y: 1.5, z: 20 },
-                { x: 25, y: 1.5, z: -5 }
+                // Nivel 1: 1 enemigo - MUY cerca del spawn (-17, 1.5, -67) para que sea visible
+                { x: -12, y: 1.5, z: -60 }  // Muy cerca del spawn (distancia ~7 unidades) - VISIBLE
             ],
             2: [
-                { x: -25, y: 1.5, z: -45 },
-                { x: 15, y: 1.5, z: -25 },
-                { x: -5, y: 1.5, z: -75 }
+                // Nivel 2: 3 enemigos
+                { x: -25, y: 1.5, z: -45 },  // Alejado del spawn
+                { x: 15, y: 1.5, z: -25 },   // Alejado del spawn
+                { x: -5, y: 1.5, z: -75 }    // Alejado del spawn
             ],
             3: [
-                { x: 15, y: 1.5, z: 15 },
-                { x: -20, y: 1.5, z: 10 },
-                { x: 10, y: 1.5, z: -15 }
+                // Nivel 3: 5 enemigos - MÁS ALEJADOS del spawn (5, 1.5, 5)
+                { x: 35, y: 1.5, z: 35 },    // Más alejado (distancia ~42 unidades)
+                { x: -30, y: 1.5, z: 25 },   // Más alejado (distancia ~38 unidades)
+                { x: 30, y: 1.5, z: -30 },   // Más alejado (distancia ~42 unidades)
+                { x: -35, y: 1.5, z: -25 },  // Más alejado (distancia ~42 unidades)
+                { x: 40, y: 1.5, z: 15 }     // Más alejado (distancia ~40 unidades)
             ]
         }
 
         // Obtener posiciones para el nivel actual
         const positions = levelEnemyPositions[currentLevel] || []
         
-        // Si no hay suficientes posiciones definidas, generar aleatorias alejadas del jugador
-        const enemyCount = Math.min(count, positions.length || count)
+        // Verificar que tenemos el template del enemigo
+        if (!this.enemyTemplate) {
+            console.error('❌ No hay template de enemigo disponible')
+            return
+        }
         
+        // Verificar que tenemos el robot
+        if (!this.robot) {
+            console.error('❌ No hay referencia al robot')
+            return
+        }
+        
+        console.log(`🎮 Creando ${enemyCount} enemigo(s) para el nivel ${currentLevel}`)
+        console.log(`📍 Spawn del jugador: (${spawnPoint.x}, ${spawnPoint.y}, ${spawnPoint.z})`)
+        
+        // Crear enemigos en las posiciones especificadas
         for (let i = 0; i < enemyCount; i++) {
             let position
             if (positions[i]) {
-                // Usar posición específica del nivel (absoluta, no relativa al jugador)
+                // Usar posición específica del nivel
                 position = new THREE.Vector3(positions[i].x, positions[i].y, positions[i].z)
+                // Calcular distancia del spawn
+                const distance = Math.sqrt(
+                    Math.pow(position.x - spawnPoint.x, 2) + 
+                    Math.pow(position.z - spawnPoint.z, 2)
+                )
+                console.log(`📍 Posición enemigo ${i + 1}: (${position.x}, ${position.y}, ${position.z}) - Distancia del spawn: ${distance.toFixed(2)} unidades`)
             } else {
-                // Fallback: posición aleatoria alejada del jugador
+                // Fallback: posición aleatoria alejada del spawn (mínimo 30 unidades)
                 const angle = Math.random() * Math.PI * 2
-                const radius = 25 + Math.random() * 15
-                const x = playerPos.x + Math.cos(angle) * radius
-                const z = playerPos.z + Math.sin(angle) * radius
+                const radius = 30 + Math.random() * 15 // Entre 30 y 45 unidades
+                const x = spawnPoint.x + Math.cos(angle) * radius
+                const z = spawnPoint.z + Math.sin(angle) * radius
                 position = new THREE.Vector3(x, 1.5, z)
+                console.log(`📍 Posición aleatoria enemigo ${i + 1}: (${x.toFixed(2)}, 1.5, ${z.toFixed(2)})`)
             }
 
-            const enemy = new Enemy({
-                scene: this.scene,
-                physicsWorld: this.experience.physics.world,
-                playerRef: this.robot,
-                model: this.enemyTemplate,
-                position: position,
-                experience: this.experience
-            })
+            try {
+                const enemy = new Enemy({
+                    scene: this.scene,
+                    physicsWorld: this.experience.physics.world,
+                    playerRef: this.robot,
+                    model: this.enemyTemplate,
+                    position: position,
+                    experience: this.experience
+                })
 
-            // Pequeño delay para que no ataquen todos a la vez
-            enemy.delayActivation = 1.0 + i * 0.5
-            this.enemies.push(enemy)
-            console.log(`🤖 Enemigo ${i + 1} creado en nivel ${currentLevel} en posición: (${position.x.toFixed(2)}, ${position.y.toFixed(2)}, ${position.z.toFixed(2)})`)
+                // Pequeño delay para que no ataquen todos a la vez
+                enemy.delayActivation = 1.0 + i * 0.5
+                this.enemies.push(enemy)
+                console.log(`✅ Enemigo ${i + 1}/${enemyCount} creado exitosamente en nivel ${currentLevel}`)
+            } catch (error) {
+                console.error(`❌ Error creando enemigo ${i + 1}:`, error)
+            }
         }
+        
+        console.log(`🎯 Total de enemigos creados: ${this.enemies.length}/${enemyCount}`)
     }
 
     toggleAudio() {
@@ -300,10 +341,14 @@ export default class World {
                     this.points = (this.points || 0) + 1
                     this.robot.points = this.points
 
-                    const pointsTarget = this.levelManager.getCurrentLevelTargetPoints()
-                    console.log(`🎯 Monedas recolectadas: ${this.points} / ${pointsTarget}`)
+                    // Contar monedas default totales y recogidas del nivel actual
+                    const totalDefault = this.loader.prizes.filter(p => p.role === 'default').length
+                    const collectedDefault = this.loader.prizes.filter(p => p.role === 'default' && p.collected).length
+                    
+                    console.log(`🎯 Nivel ${this.levelManager.currentLevel} - Monedas recolectadas: ${collectedDefault} / ${totalDefault}`)
 
-                    if (!this.finalPrizeActivated && this.points === pointsTarget) {
+                    // Activar finalPrize solo cuando TODAS las monedas default estén recogidas
+                    if (!this.finalPrizeActivated && totalDefault > 0 && collectedDefault === totalDefault) {
                         const finalCoin = this.loader.prizes.find(p => p.role === "finalPrize")
                         if (finalCoin && !finalCoin.collected && finalCoin.pivot) {
                             finalCoin.pivot.visible = true
@@ -331,7 +376,7 @@ export default class World {
                                 this.portalSound.play()
                             }
 
-                            console.log("🪙 Coin final activado correctamente.")
+                            console.log(`🪙 Nivel ${this.levelManager.currentLevel} - Coin final activado correctamente. Todas las ${totalDefault} monedas default fueron recolectadas.`)
                         }
                     }
                 }
@@ -397,6 +442,7 @@ export default class World {
 
         // ✅ Verificar si todas las monedas se han recogido y aún no se activó el finalPrize
         // ✅ Activar finalPrize si todas las monedas default fueron recolectadas (desde VR o PC)
+        // ✅ Funciona para todos los niveles (1, 2 y 3)
         if (!this.finalPrizeActivated && this.loader?.prizes) {
             const totalDefault = this.loader.prizes.filter(p => p.role === 'default').length
             const collectedDefault = this.loader.prizes.filter(p => p.role === 'default' && p.collected).length
@@ -429,7 +475,7 @@ export default class World {
                         this.portalSound.play()
                     }
 
-                    console.log("🪙 FinalPrize activado automáticamente desde VR.")
+                    console.log(`🪙 Nivel ${this.levelManager.currentLevel} - FinalPrize activado automáticamente. Todas las ${totalDefault} monedas default fueron recolectadas.`)
                 }
             }
         }
@@ -544,10 +590,25 @@ export default class World {
                 p.collected = false;
             });
 
+            // Contar monedas default y finalPrize del nivel actual
             this.totalDefaultCoins = this.loader.prizes.filter(p => p.role === "default").length;
-            console.log(`🎯 Total de monedas default para el nivel ${level}: ${this.totalDefaultCoins}`);
+            const totalFinalPrize = this.loader.prizes.filter(p => p.role === "finalPrize").length;
+            console.log(`🎯 Nivel ${level} cargado:`);
+            console.log(`   - Monedas default: ${this.totalDefaultCoins}`);
+            console.log(`   - Monedas finalPrize: ${totalFinalPrize}`);
+            console.log(`   - La moneda finalPrize se activará cuando se recojan las ${this.totalDefaultCoins} monedas default`);
 
             this.resetRobotPosition(spawnPoint);
+            
+            // Crear enemigos después de cargar el nivel y posicionar al jugador
+            // Delay más largo para asegurar que el jugador esté completamente posicionado
+            setTimeout(() => {
+                if (this.robot?.body?.position) {
+                    console.log(`🎯 Creando enemigos para nivel ${level}, jugador en:`, this.robot.body.position)
+                }
+                this.spawnEnemies()
+            }, 500)
+            
             console.log(`✅ Nivel ${level} cargado con spawn en`, spawnPoint);
         } catch (error) {
             console.error('❌ Error cargando nivel:', error);
